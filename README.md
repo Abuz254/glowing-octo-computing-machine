@@ -79,6 +79,27 @@ Look into customer service calls feature
 - Reach out to customers who make multiple calls to address their concerns promptly.
 - Use customer feedback from service calls to enhance overall service quality.
 
+![Compute confusion matrix](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(14).png)
+
+- True Positives (TP): 76 - Churn customers that the model correctly predicted as churn.
+- False Positives (FP): 7 - Non-churn customers that the model incorrectly predicted as churn.
+- True Negatives (TN): 559 - Non-churn customers that the model correctly predicted as non-churn.
+- False Negatives (FN): 25 - Churn customers that the model incorrectly predicted as non-churn.
+
+![Feature Importance Plot](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(15).png)
+
+- The feature indicates that total day minutes has the highest importance score among the features used in the XGBoost model.
+- Has an importance score of approximately 306.0.
+- This suggests that total day minutes significantly influences the model’s predictions, particularly when it comes to predicting customer churn.
+- Customers’ total call duration during the day appears to be a critical factor in determining whether they are likely to churn or remain with the service.
+- If a customer spends more time on calls during the day, it may impact their likelihood of churning.
+
+![ROC Curve](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(16).png)
+
+- The closer the ROC curve is to the top-left corner, the better the model’s performance.
+- The AUC is approximately 0.92, indicating strong predictive accuracy.
+- XGBoost model performs well, as evidenced by the high AUC.
+
 #### Correlation with Target Variable:
 - Correlation coefficients between numerical features and churn is calculated and visualized to identify important predictors.
 - Correlation analysis revealed that features like `total day minutes`, `total day charge`, `total international minutes`, `total international charge`, and `customer service calls` have notable correlations with churn.
