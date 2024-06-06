@@ -16,29 +16,91 @@
 - No missing values in the dataset. 
 - Imported relevant libraries for data analysis and machine learning tasks, including pandas, numpy, seaborn, matplotlib, and scikit-learn.
 
-### Exploratory Data Analysis (EDA)
+# Exploratory Data Analysis (EDA)
 
+#### Normalize Numerical Features: 
+Numerical features were normalized using MinMaxScaler to ensure they are on a similar scale, which is crucial for models sensitive to feature scaling.
+
+#### One-Hot Encoding for Categorical Features: 
+The 'state' column was converted to numerical format using one-hot encoding to handle categorical data.
+
+#### Binary Encoding for Plans: 
+Binary encoding was applied to 'international plan' and 'voice mail plan', mapping 'yes' to 1 and 'no' to 0.
+
+#### Encode Target Variable: 
+The `churn` column was encoded as 0 and 1 to be used as the target variable for classification models.
+
+#### Drop Irrelevant Features: 
+Features like `phone number` is dropped as they do not contribute to the predictive modeling.
+
+## Visualizations
 
 ![churn distribution](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download%20(5).png)
 
-## Data Modeling:
+- Out of 3,333 customers in the dataset:
+- 483 have terminated their contract with SyriaTel.
+- That is 14.5% of customers lost.
+- Distribution of the binary classes shows a data imbalance.
+- This needed to be addressed before modeling as an unbalanced feature can cause the model to make false predictions.
 
-- Defined pipelines for Logistic Regression, SVM, Decision Tree, and KNN classifiers.
-- These are models that benefit from feature scaling, reason to include a StandardScaler.
+![Visualize churn by state](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(6).png)
 
-### Training:
-- Fitted each pipeline on the training data.
+- West Virginia (WV) has a notable churn count.
+- Look into West Virginia based on the feature of International Plan and Churn.
 
-### Initial Evaluation:
-Evaluated each pipeline on the test data and printed the accuracy.
+![Churn by international plan in West Virginia](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(7).png)
 
-### Hyperparameter Tuning:
-- Defined parameter grids for each model.
-- Used GridSearchCV to find the best hyperparameters for each model.
+- Customers without an international plan (‘no’) who did not churn (‘False’) constitute the majority.
+- A smaller number of customers without an international plan (‘no’) did churn (‘True’).
+- The number of customers with an international plan (‘yes’) is significantly lower overall.
 
-### Re-Evaluation:
-- Refitted the pipelines with the best found parameters.
-- Evaluated and print the accuracy, precision, recall, and F1-score for each classifier.
+##### Therefore;
+- Most West Virginia customers do not have an international plan.
+- Among those without an international plan, the majority remain loyal.
+- The churn rate is relatively low for both groups.
 
-### Confusion Matrix Plotting: 
-Decision Tree classifier was plotted using a custom function.
+Further analysis on West Virginia on the feature Voice Mail Plan and Churn.
+
+![Churn by voice mail plan in West Virginia](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(8).png)
+
+Almost the same situation as the International Plan, the Voice mail plan shows a similar trend.
+
+- Most West Virginia customers do not have a voice mail plan.
+- Among those without a voice mail plan, the majority remain loyal (did not churn).
+- The churn rate is relatively low for both groups.
+
+Look into customer service calls feature
+
+![Visualize churn by customer service calls](https://github.com/Abuz254/glowing-octo-computing-machine/blob/main/Images/download(9).png)
+
+- Customers who made 4 or more service calls are at a higher risk of churning.
+- Relationship between service calls and churn suggests that customer satisfaction with service interactions plays a crucial role.
+- Focus on resolving issues effectively during the first few calls to prevent escalation.
+- Reach out to customers who make multiple calls to address their concerns promptly.
+- Use customer feedback from service calls to enhance overall service quality.
+
+#### Correlation with Target Variable:
+- Correlation coefficients between numerical features and churn is calculated and visualized to identify important predictors.
+- Correlation analysis revealed that features like `total day minutes`, `total day charge`, `total international minutes`, `total international charge`, and `customer service calls` have notable correlations with churn.
+
+## Model Building
+
+Five machine learning models were built and evaluated to predict customer churn:
+
+- Logistic Regression
+- Support Vector Machine (SVM)
+- Decision Tree
+- K-Nearest Neighbors (KNN)
+- XGBoost
+
+- A pipeline approach was used to ensure consistent and efficient data preprocessing and model training. 
+- Hyperparameter tuning was performed using GridSearchCV to optimize model performance.
+
+#### Performance Metrics
+Performance of each model was evaluated using metrics such as train accuracy, test accuracy, F1-score, precision, and recall. 
+These metrics provided insights into each model's effectiveness in predicting customer churn.
+
+## Conclusion
+- XGBoost model demonstrated the best performance across all evaluated metrics, making it the most effective model for predicting customer churn. 
+- With high accuracy, precision, and recall, XGBoost provides a reliable tool for identifying customers at risk of leaving. 
+- Implementing this model enables SyriaTel to target retention efforts effectively, improving customer satisfaction and reducing churn rates.
