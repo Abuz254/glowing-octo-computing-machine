@@ -1,12 +1,12 @@
-# Introduction
+# PROJECT TITLE: SyriaTel
 
 ## Business Understanding:
 
-#### The project focuses on SyriaTel, a telecommunications company facing customer churn issues due to increased competition. Our aims to develop predictive models to forecast customers that are likely to leave, thus helping SyriaTel retain its customer base.
+#### The project focuses on SyriaTel, a telecommunications company facing customer churn issues due to increased competition. Our aim is to develop a predictive model to forecast customers that are likely to leave, thus helping SyriaTel retain its customer base.
 
 ## Data Understanding:
 
-- The dataset used for analysis, named `telecom_dataset`. 
+- The dataset used for analysis, named `telecom_dataset.csv`. 
 - It contains information about customers using SyriaTel's services. 
 - It can be accessed on Kaggle. 
 - The dataset has 3333 rows and 21 columns in CSV format.
